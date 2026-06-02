@@ -33,5 +33,10 @@ class MainActivity : AppCompatActivity() {
         openFileOutput(filename, Context.MODE_PRIVATE).use { output ->
             output.write(fileContents.toByteArray())
         }
+
+        val texto = openFileInput("datos_usuario.txt").bufferedReader().use { reader ->
+            reader.readText()
+        }
+        binding.tvwContenido.text = texto
     }
 }
