@@ -3,10 +3,10 @@ package com.example.almacenamiento
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import android.content.Context
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.almacenamiento.databinding.ActivityMainBinding
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         val filename = "datos_usuario.txt"
         val fileContents = "Puntaje: 1500\nNivel: 5"
-        openFileOutput(filename, Context.MODE_PRIVATE).use { output ->
+        openFileOutput(filename, MODE_PRIVATE).use { output ->
             output.write(fileContents.toByteArray())
         }
 
@@ -43,5 +43,8 @@ class MainActivity : AppCompatActivity() {
         arrayArchivos.forEach { archivo ->
             println(archivo)
         }
+
+        val cacheFile = File.createTempFile("session_tmp", ".dat", cacheDir)
+        cacheFile.writeText("ID_Sesion: 0x99283")
     }
 }
