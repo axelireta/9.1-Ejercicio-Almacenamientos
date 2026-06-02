@@ -38,5 +38,10 @@ class MainActivity : AppCompatActivity() {
             reader.readText()
         }
         binding.tvwContenido.text = texto
+
+        val arrayArchivos: Array<String> = fileList()
+        arrayArchivos.forEach { archivo ->
+            println(archivo)
+        }
     }
 }
